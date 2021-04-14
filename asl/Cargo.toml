@@ -6,4 +6,8 @@ edition = "2018"
 
 [dependencies]
 asl-derive = { path = "asl-derive" }
-log = "0.4.6"
+log = { version = "0.4.6", optional = true }
+bytemuck = { git = "https://github.com/Lokathor/bytemuck", branch = "main" }
+
+[features]
+std = ["log"]

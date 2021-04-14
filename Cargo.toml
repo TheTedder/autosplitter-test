@@ -1,19 +1,25 @@
 [package]
-name = "celeste-auto-splitter"
+name = "autosplitter"
 version = "0.1.0"
-authors = ["Christopher Serr <christopher.serr@gmail.com>"]
+authors = ["Ted Wollman <25165500+TheTedder@users.noreply.github.com>"]
 edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[workspace]
 
 [dependencies]
 asl = { path = "asl" }
-plain = "0.2.3"
-static_locks = "0.1.0"
-wstr = "0.2.0"
+bytemuck = { git = "https://github.com/Lokathor/bytemuck", branch = "main", features = ["derive"] }
+arrayvec = { version = "0.7.0", default-features = false }
+spinning_top = "0.2.3"
 
 [lib]
-name = "celeste"
 crate-type = ["cdylib"]
 
 [profile.release]
 lto = true
 panic = "abort"
+
+[profile.release.build-override]
+opt-level = 0
